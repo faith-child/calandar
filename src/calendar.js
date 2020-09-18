@@ -5,6 +5,7 @@ class Calendar extends React.Component{
         return(
             <>
                 <h2>Calendar</h2>
+                <p>Nothing today!</p>
             </>
         )
     }
