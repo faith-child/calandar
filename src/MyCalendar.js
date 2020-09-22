@@ -1,12 +1,11 @@
 import React , {useState, useEffect} from "react"
-
 import "./styles.css"
-import moment from "moment"
+import Header from "./Header"
 import buildCalendar from "./Build";
 
-function MyCalendar(){
+function MyCalendar({value, onChange}){
     const [calendar, setCalendar] = useState([])
-    const [value, setValue] = useState(moment())
+   
   
     
     useEffect(()=>{
@@ -29,26 +28,20 @@ function MyCalendar(){
         if(isToday(day)) return "today"
         return""
     }
-    function currMonthName(){
-        return value.format("MMMM")
-    }
-
-    function currYear(){
-        return value.format("YYYY")
-    }
+    
     return(
         <div className="calendar">
-        <div className="header">
-            <div></div>
-            <div>{currMonthName()} {currYear()}</div>
-            <div></div>
-        </div>
-
+        <Header value={value} setValue={onChange}/>
            <div className="body">
+            <div className="day-names"> {
+                ["s","m","t","w","t","f","s"].map((d) => (
+                    <div className="week">{d}</div>
+                ))}
+            </div>
             {calendar.map((week) => (
                     <div >
                         {week.map((day) => (
-                            <div className="day" onClick ={()=>setValue(day)}>
+                            <div className="day" onClick ={()=>onChange(day)}>
                                 <div className={dayStyles(day)}>{
                                 day.format("D").toString()}
                                 </div>
