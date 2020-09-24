@@ -69,6 +69,12 @@
     border: 1px solid lightblue;
   }
   
+  .calendar .header .current {
+    font-weight: bolder;
+    font-size: larger;
+    color: darkblue;
+    
+  }
   .calendar .header .previous {
     flex: 1;
     text-align: left;
@@ -101,7 +107,7 @@
     width: calc(100% / 7);
     height: 100px;
     display: inline-block;
-    background-color: white;
+    background-color:white;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -113,15 +119,17 @@
     width: 54px;
     height: 100px;
     position: relative;
-    color: black;
+    color: darkblue;
     overflow: hidden;
     z-index: 100;
     line-height: 44px;
+    font-weight: bold;
     
   }
   
   .calendar .day div.before {
     color: grey;
+    font-weight: lighter;
   }
   
   .calendar .day div.selected {

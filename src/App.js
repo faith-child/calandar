@@ -2,16 +2,11 @@ import React from 'react';
 import MyCalendar from "./MyCalendar"
 import Title from "./Title"
 import {
-  
   Button
-  
 } from "@chakra-ui/core";
-//import AddEvent from "./AddEvent"
 import Modal from './Modal'
 import  "./styles.css"
-//import Eventform from "./Eventform"
- import { ThemeProvider, CSSReset } from "@chakra-ui/core";
-import { render } from '@testing-library/react';
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 
 class  App extends React.Component {

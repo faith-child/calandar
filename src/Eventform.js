@@ -61,6 +61,16 @@ class Eventform extends React.Component{
                             onChange= {this.handleChange}
                         />    
                         <br/>
+                        <Box> 
+                            <p>{this.state.event}</p>
+                            <br/>
+                            <p>{this.state.date}</p>
+                            <br/>
+                            <p>{this.state.startTime}</p>
+                            <br/>
+                            <p>{this.state.endTime}</p>
+                        </Box>
+                        <br/>
                         <Button 
                         pos="absolute" 
                         mt={4}
@@ -69,15 +79,7 @@ class Eventform extends React.Component{
                         >
                             Submit 
                         </Button>
-                    <Box> 
-                        <p>{this.state.event}</p>
-                        <br/>
-                        <p>{this.state.date}</p>
-                        <br/>
-                        <p>{this.state.startTime}</p>
-                        <br/>
-                        <p>{this.state.endTime}</p>
-                    </Box>
+                   
                 </FormControl> 
             </form>
             
