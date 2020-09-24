@@ -28,8 +28,6 @@ class Eventform extends React.Component{
         return(
             <form>
                 <FormControl p="50px"> 
-                    <FormLabel  htmlFor="event">Add an event </FormLabel>
-                            <br/>
                         <FormLabel> Event Name </FormLabel>
                         <Input 
                             name= "event"

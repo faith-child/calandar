@@ -4,8 +4,9 @@ import "./styles.css"
 import Header from "./Header"
 import buildCalendar from "./Build";
 
-function MyCalendar({value, onChange}){
+function MyCalendar(){
     const [calendar, setCalendar] = useState([])
+    const[value,setValue] = useState(moment())
 
     useEffect(()=>{
         setCalendar(buildCalendar(value))
@@ -48,7 +49,7 @@ function MyCalendar({value, onChange}){
 
     return(
         <div className="calendar ">
-        <Header value={value} onChange={onChange}/>
+        <Header value={value}  onChange={setValue}/>
         <div className="body">
         <div className="day-names "> {
                 ["s","m","t","w","t","f","s"].map((d) => (
@@ -58,7 +59,7 @@ function MyCalendar({value, onChange}){
             {calendar.map((week) => (
                     <div>
                         {week.map((day) => (
-                            <div className="day " onClick ={()=>onChange(day)}>
+                            <div className="day " onClick ={()=> !beforeToday(day)&& setValue(day)}>
                                 <div className={dayStyles(day)}  >{
                                 moment(day).format("D").toString()}
                                 </div>

@@ -19,7 +19,7 @@ function Header({value, onChange}){
         return value.clone().add(1, "month")
     }
     function thisMonth() {
-        return value.isSame(new Date(), "month");
+        return moment(value).isSame(new Date(), "month");
       }
     
     return(

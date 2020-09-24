@@ -40,7 +40,7 @@
 .react-calendar {
   width: 350px;
   max-width: 100%;
-  background: white;
+  background: rgb(235, 179, 179);
   border: 2px solid #a0a096;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.125em;
