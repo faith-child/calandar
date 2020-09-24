@@ -1,4 +1,4 @@
-/* Grid
+/* Grid 
 
 .date-grid{
     display: grid;
@@ -41,7 +41,7 @@
 .calendar {
     box-sizing: border-box;
     font-size: 1rem;
-    max-width: 400px;
+    width: 100%;
   }
   
   .calendar .header {
@@ -51,20 +51,21 @@
     line-height: 2rem;
     color: black;
     font-family: font-book;
-    font-weight: 700;
+    font-weight: bold;
     display: flex;
   }
   
   .calendar .day-names {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     align-items: center;
+    
   }
   
   .calendar .body {
-    border: 1px solid light-blue;
+    border: 1px solid lightblue;
   }
   
   .calendar .header .previous {
@@ -80,14 +81,15 @@
   }
   
   .calendar .week {
-    background-color: white;
+
+    background-color: lightcyan;
     width: calc(100% / 7);
     height: 44px;
     line-height: 44px;
     text-align: center;
     text-transform: uppercase;
     color: black;
-    font-weight: 400;
+    font-weight: 300;
   }
   .calendar .week div {
     width: 100%;
@@ -96,7 +98,7 @@
   .calendar .day {
     position: relative;
     width: calc(100% / 7);
-    height: 44px;
+    height: 100px;
     display: inline-block;
     background-color: white;
     padding: 0;
@@ -108,11 +110,13 @@
   
   .calendar .day div {
     width: 54px;
-    height: 44px;
+    height: 100px;
     position: relative;
     color: black;
+    overflow: hidden;
     z-index: 100;
     line-height: 44px;
+    
   }
   
   .calendar .day div.before {
@@ -120,11 +124,21 @@
   }
   
   .calendar .day div.selected {
-    background-color: red;
-    color: white;
+    color: black;
     font-weight: bold;
+    
   }
   
   .calendar .day div.today {
-    background-color: grey;
+    color:rgb(243, 86, 86);
+    font-weight: bolder;
+    
   }
+
+/*Add Event*/
+
+/*Button*/
+
+.AddEventbutton{
+  padding-left: 46%;
+}
