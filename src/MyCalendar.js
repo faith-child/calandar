@@ -2,6 +2,7 @@ import React , {useState, useEffect} from "react"
 import moment from "moment"
 import "./styles.css"
 import Header from "./Header"
+import Day from "./Day"
 import buildCalendar from "./Build";
 
 function MyCalendar(){
@@ -30,25 +31,21 @@ function MyCalendar(){
     //     return a;
     //   }
     
-    function isSelected(day){
-        return moment(value).isSame(day, "day")
-    }
-    function beforeToday(day){
-        return moment(day).isBefore(new Date(), "day")
-    }
-    function isToday(day){
-        return moment(new Date()).isSame(day, "day")
-    }
+     
+    
+   
+      
+    // function monthStyles(month){
+    //         if(prevMonth(month)) return "previous"
+    //         if(thisMonth(month)) return "current"
+    //         if(nextMonth(month)) return "next"
+    //         return""
 
-    function dayStyles(day){
-        if(beforeToday(day)) return "before"
-        if(isSelected(day)) return "selected"
-        if(isToday(day)) return "today"
-        return""
-    }
+    // }
+    
 
     return(
-        <div className="calendar ">
+        <div className="calendar grid-container">
         <Header value={value}  onChange={setValue}/>
         <div className="body">
         <div className="day-names "> {
@@ -57,13 +54,11 @@ function MyCalendar(){
                 ))}
         </div>
             {calendar.map((week) => (
+                //Add light grey colouring to previous month days 
+
                     <div>
                         {week.map((day) => (
-                            <div className="day " onClick ={()=> !beforeToday(day)&& setValue(day)}>
-                                <div className={dayStyles(day)}  >{
-                                moment(day).format("D").toString()}
-                                </div>
-                            </div>
+                           <Day day={day} onClick={setValue} value={value}/>
                         ))}
                     </div>
 
