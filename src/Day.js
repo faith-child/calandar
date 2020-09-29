@@ -24,7 +24,7 @@ function Day({ day, onClick, value }) {
     function dayStyles(day) {
         if (!thisMonth(day)) return "before"
         // if (beforeToday(day)) return "before"
-        if (isSelected(day)) return "selected"
+        if (isSelected(day) && (!isToday(day))) return "selected"
         if (isToday(day)) return "today"
         return ""
     }

@@ -45,7 +45,7 @@ function MyCalendar(){
     
 
     return(
-        <div className="calendar grid-container">
+        <div className="calendar">
         <Header value={value}  onChange={setValue}/>
         <div className="body">
         <div className="day-names "> {

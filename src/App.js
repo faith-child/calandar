@@ -22,12 +22,12 @@ class  App extends React.Component {
   }
   render(){
     return (
-      <>
+      <div class="grid-container">
         <ThemeProvider>
           <CSSReset/>
             <Title/>
             <br/>
-            <Button onClick={e =>{
+            <Button  pos="absolute" left="50em"  variantColor="blue" variant="solid" onClick={e =>{
               this.showModal()
             }}>Create Event</Button>
           
@@ -35,7 +35,7 @@ class  App extends React.Component {
             <br/>
             <MyCalendar/>
         </ThemeProvider>
-    </>
+    </div>
     );
   }
 }

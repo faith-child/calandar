@@ -23,7 +23,7 @@ class AddEvent extends React.Component{
             <Modal /*show={this.state.show} handleClose={this.hideModal}*/>
                 <Eventform/>
             </Modal>
-            <Button /*onClick={this.showModal} */variantColor="blue" variant="solid" >Create Event</Button>
+            <Button /*onClick={this.showModal} */variantColor="blue" variant="solid" p={} >Create Event</Button>
           </main>
         );
       }
