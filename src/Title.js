@@ -1,6 +1,6 @@
 import React from "react"
 import "./styles.css"
-import { Heading, Grid } from "@chakra-ui/core";
+import { Heading } from "@chakra-ui/core";
 function Title() {
    return(
     <Heading>Calendar</Heading>
