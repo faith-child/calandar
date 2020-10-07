@@ -2,7 +2,7 @@
 import React from "react";
 import Modal from'./Modal'
 import { Button } from "@chakra-ui/core";
-import Eventform from "./Eventform"
+import Eventform from "./AddEvent/Eventform"
 
 class AddEvent extends React.Component{
     // state = { show: false };

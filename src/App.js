@@ -1,8 +1,8 @@
 import React from 'react';
-import MyCalendar from "./MyCalendar"
-import Title from "./Title"
-import Modal from './Modal'
-import  "./styles.css"
+import MyCalendar from "./Calendar/MyCalendar"
+import Title from "./Calendar/Title"
+import Modal from './AddEvent/Modal'
+import  "./Calendar/styles.css"
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 
@@ -19,7 +19,7 @@ class  App extends React.Component {
   }
   render(){
     return (
-      <div class="grid-container">
+      <div className="grid-container">
         <ThemeProvider>
           <CSSReset/>
             <Title/>

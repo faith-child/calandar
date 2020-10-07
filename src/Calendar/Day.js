@@ -1,8 +1,24 @@
 import React from "react"
 import moment from "moment"
 import "./styles.css"
+// import Eventform from "./AddEvent/Eventform"
+import {IconButton } from "@chakra-ui/core";
+// class Event extends React.Component{
+//     constructor(){
+//         super()
+//         state={
+//             show:false
+//         }
+//     }
+//     showModal = e => {
+//         this.setState({
+//           show: !this.state.show
+//         })
+//       }
 
 function Day({ day, onClick, value }) {
+
+
     function beforeToday(day) {
         return moment(day).isBefore(new Date(), "day")
     }
@@ -14,7 +30,10 @@ function Day({ day, onClick, value }) {
 
     function isSelected(day) {
         return moment(value).isSame(day, "day")
+
     }
+
+
     // function nextMonth() {
     //     return value.clone().add(1, "month")
     // }
@@ -28,13 +47,16 @@ function Day({ day, onClick, value }) {
         if (isToday(day)) return "today"
         return ""
     }
-   
+    // function showModal(e){
+    //     return <Eventform/>
+    // }
 
     return (
         <div className="day" onClick={() => !beforeToday(day) && onClick(day)}>
             <div className={dayStyles(day)}>{
                 moment(day).format("D").toString()}
             </div>
+            <IconButton  aria-label="Add Event"icon="add" size="sm"  variantColor="red" />
         </div>
     )
 
@@ -42,4 +64,4 @@ function Day({ day, onClick, value }) {
 
 
 
-export default Day
+export default Day;
