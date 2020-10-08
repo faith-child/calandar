@@ -127,7 +127,7 @@
 
   }
   
-  .calendar .day div.before {
+  .calendar .day div.notCurrent {
     color: black;
     font-weight: lighter;
   }

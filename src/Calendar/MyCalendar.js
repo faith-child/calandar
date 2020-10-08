@@ -5,47 +5,44 @@ import Header from "./Header"
 
 import Day from "./Day"
 import buildCalendar from "./Build";
+import { SimpleGrid, Box, Text } from "@chakra-ui/core"
 
-function MyCalendar (){
-  
-    
-    const[calendar, setCalendar] = useState([])
-    const[value, setValue] = useState(moment())
+function MyCalendar() {
 
-  
+
+    const [calendar, setCalendar] = useState([])
+    const [date, setDate] = useState(moment())
+
+
 
     useEffect(() => {
-        setCalendar(buildCalendar(value))
-    }, [value])
+        setCalendar(buildCalendar(date))
+    }, [date])
 
     // toggleModal = () => {
     //     const { showEventModal } = this.state;
     //     const newState = { showEventModal: !showEventModal };
 
     return (
-        <div className="calendar">
-            <Header value={value} onChange={setValue} />
-            <div className="body">
-                <div className="day-names "> {
-                    ["s", "m", "t", "w", "t", "f", "s"].map((d) => (
-                        <div className="week">{d}</div>
+        <Box >
+            <Box >
+                <Header value={date} onChange={setDate} />
+            </Box>
+            <Box className="body">
+                <SimpleGrid columns={7} spacing={4} >
+                    { ["S", "M", "T", "W", "T", "F", "S"].map((d) => (
+                        <Text fontSize="lg"  as="em"  textAlign="center">{d}</Text>
                     ))}
-                </div>
-                {calendar.map((week) => (
-                    //Add light grey colouring to previous month days 
-
-                    <div>
-                        {week.map((day) => (
-                         <Day day={day} onClick={setValue}  value={value} />
-                        ))}
-                        
-                    </div>
-
-                ))}
-            </div>
-        </div>
-        )
-    }
+                    {calendar.map((week) => {
+                        return week.map((day) => (
+                            <Day day={day} onClick={setDate} date={date} />
+                        ))
+                    })}
+                </SimpleGrid>
+            </Box>
+        </Box>
+    )
+}
 
 
 export default MyCalendar
