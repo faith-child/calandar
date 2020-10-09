@@ -1,11 +1,10 @@
 
 
+import { Box } from '@chakra-ui/core';
 import React from 'react'
-import Eventform from './Eventform'
+import Eventform from '../addEvent/EventForm'
 class Modal extends React.Component {
   
-  
-
   onClose = e => {
     this.props.onClose && this.props.onClose(e);
   };
@@ -15,9 +14,9 @@ class Modal extends React.Component {
       return null
     }
     return (
-      <div>
+      <Box bg="tomato">
         <Eventform/>
-      </div>
+      </Box>
       // <section className="modal-main">
       //   <button onClick={handleClose}>close</button>
       // </section>

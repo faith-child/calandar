@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import moment from "moment"
 import "./styles.css"
 import Header from "./Header"
-
 import Day from "./Day"
 import buildCalendar from "./Build";
 import { SimpleGrid, Box, Text } from "@chakra-ui/core"
@@ -19,9 +18,7 @@ function MyCalendar() {
         setCalendar(buildCalendar(date))
     }, [date])
 
-    // toggleModal = () => {
-    //     const { showEventModal } = this.state;
-    //     const newState = { showEventModal: !showEventModal };
+
 
     return (
         <Box >

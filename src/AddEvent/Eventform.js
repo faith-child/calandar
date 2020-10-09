@@ -7,7 +7,8 @@ import {
     Button
 
 } from "@chakra-ui/core";
-class Eventform extends React.Component {
+
+class EventForm extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -134,4 +135,4 @@ class Eventform extends React.Component {
         )
     }
 }
-export default Eventform
+export default EventForm

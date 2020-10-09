@@ -1,7 +1,8 @@
-import React from "react"
+import React  from "react"
 import moment from "moment"
+import Modal from "../addEvent/Modal"
+// import EventForm from "../addEvent/EventForm"
 import "./styles.css"
-// import Eventform from "./AddEvent/Eventform"
 import { IconButton, Flex, Box, Badge } from "@chakra-ui/core";
 // class Event extends React.Component{
 //     constructor(){
@@ -16,6 +17,20 @@ import { IconButton, Flex, Box, Badge } from "@chakra-ui/core";
 //         })
 //       }
 class Day extends React.Component {
+    
+    state={
+        show: false
+    }
+    
+    hideModal = () => {
+        this.setState({ show: false });
+         };
+    showModal = e => {
+        this.setState({
+            show: !this.state.show
+        })
+    }
+   
     static beforeToday(day) {
         return moment(day).isBefore(new Date(), "day")
     }
@@ -38,6 +53,9 @@ class Day extends React.Component {
         if (this.isSelected(date, day)) return "selected"
         return ""
     }
+        // toggleModal = () => {
+    //     const { showEventModal } = this.state;
+    //     const newState = { showEventModal: !showEventModal };
     render() {
         return (
             <Flex p={1}
@@ -47,13 +65,15 @@ class Day extends React.Component {
                 rounded={10}
                 direction='column'
                 onClick={() => !Day.beforeToday(this.props.day) && this.props.onClick(this.props.day)}
-                >
+            >
                 <Flex w='100%' justify='space-between'>
                     <Box className={this.dayStyles(this.props.date, this.props.day)}>{
                         moment(this.props.day).format("D").toString()}
                     </Box>
-                    <IconButton isRound aria-label="Add Event" icon="add" size="sm" variantColor="red" />
+                    <IconButton isRound aria-label="Add Event" icon="add" size="sm" variantColor="red" onClick={e =>{ this.showModal() }} /> 
                 </Flex>
+                <Modal  show={this.state.show} handleClose={this.hideModal}>
+                    </Modal> 
                 <Badge>hello</Badge>
             </Flex>
         )
