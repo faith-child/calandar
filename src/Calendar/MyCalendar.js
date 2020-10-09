@@ -7,7 +7,7 @@ import buildCalendar from "./Build";
 import { SimpleGrid, Box, Text } from "@chakra-ui/core"
 
 function MyCalendar() {
-
+    
 
     const [calendar, setCalendar] = useState([])
     const [date, setDate] = useState(moment())
@@ -19,20 +19,22 @@ function MyCalendar() {
     }, [date])
 
 
-
     return (
         <Box >
             <Box >
                 <Header value={date} onChange={setDate} />
             </Box>
             <Box className="body">
-                <SimpleGrid columns={7} spacing={4} >
-                    { ["S", "M", "T", "W", "T", "F", "S"].map((d) => (
-                        <Text fontSize="lg"  as="em"  textAlign="center">{d}</Text>
+                <SimpleGrid columns={7} spacing={4}>
+                    {["S", "M", "T", "W", "T", "F", "S"].map((d, index) => (
+                        <Text fontSize="lg" as="em" textAlign="center" key={index} >{d}</Text>
                     ))}
+                </SimpleGrid>
+                <SimpleGrid columns={7} spacing={4}>
+
                     {calendar.map((week) => {
                         return week.map((day) => (
-                            <Day day={day} onClick={setDate} date={date} />
+                            <Day day={day} onClick={setDate} date={date} key={moment(day).format('DD-MM-YYYY')} />
                         ))
                     })}
                 </SimpleGrid>

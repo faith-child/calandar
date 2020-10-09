@@ -1,28 +1,45 @@
 
 
-import { Box } from '@chakra-ui/core';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button
+} from '@chakra-ui/core';
 import React from 'react'
-import Eventform from '../addEvent/EventForm'
-class Modal extends React.Component {
-  
-  onClose = e => {
-    this.props.onClose && this.props.onClose(e);
-  };
-  
-  render(){
-    if(!this.props.show){
-      return null
-    }
-    return (
-      <Box bg="tomato">
-        <Eventform/>
-      </Box>
-      // <section className="modal-main">
-      //   <button onClick={handleClose}>close</button>
-      // </section>
-  );
-  }
-    
-  };
+import EventForm from '../addEvent/EventForm'
 
-export default Modal
+function Form() {
+  
+  const { isOpen,  onClose} = useDisclosure();
+  
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} >
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>Add Event</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <p>Hi</p>
+          <EventForm />
+        </ModalBody>
+
+        <ModalFooter>
+          <Button variantColor="blue" mr={3} onClick={onClose}>
+            Close
+                  </Button>
+          <Button variant="ghost">Secondary Action</Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  )
+
+}
+
+
+export default Form
