@@ -1,16 +1,16 @@
 import React from "react"
 import moment from "moment"
- import Form from "../addEvent/Form"
+import Form from "../addEvent/Form"
 // import EventForm from "../addEvent/EventForm"
 import "./styles.css"
 import {
     Flex,
-    
+    Badge,
     Text,
 } from "@chakra-ui/core";
 
 function Day({ day, date, onClick,isOpen, onOpen, onClose} ) {
-
+    
 
     return (
         <Flex p={2}
@@ -27,7 +27,11 @@ function Day({ day, date, onClick,isOpen, onOpen, onClose} ) {
                 </Text>
                 <Form  onClick={onOpen} isOpen={isOpen} onClose={onClose}/>
             </Flex>
-                   
+            <Flex> 
+                <Badge>
+
+                </Badge>
+            </Flex>    
 
         </Flex>
     )
@@ -57,11 +61,11 @@ function dayStyles(date, day) {
         fontWeight: "lighter"
     }
     const selected = {
-        color: "black",
+        color: "#0000ff	",
         fontWeight: "bold"
     }
     const today = {
-        color: "red",
+        color: "#ff0000",
         fontWeight: "bolder"
     }
 

@@ -128,7 +128,6 @@ class EventForm extends React.Component {
                     >
                         Submit
                         </Button>
-
                 </FormControl>
             </form>
 
