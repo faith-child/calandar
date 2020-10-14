@@ -1,166 +1,77 @@
 import React from "react"
 import moment from "moment"
-// import Modal from "../addEvent/Modal"
+ import Form from "../addEvent/Form"
 // import EventForm from "../addEvent/EventForm"
 import "./styles.css"
-import { IconButton, 
-    Flex, 
-    Box, 
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-  } from "@chakra-ui/core";
-import EventForm from "../addEvent/EventForm";
-// // class Event extends React.Component{
-// //     constructor(){
-// //         super()
-// //         state={
-// //             show:false
-// //         }
-// //     }
-// //     showModal = e => {
-// //         this.setState({
-// //           show: !this.state.show
-// //         })
-// //       }
-// class Day extends React.Component {
+import {
+    Flex,
+    
+    Text,
+} from "@chakra-ui/core";
 
-//     state={
-//         show: false
-//     }
+function Day({ day, date, onClick,isOpen, onOpen, onClose} ) {
 
-//     hideModal = () => {
-//         this.setState({ show: false });
-//          };
-//     showModal = e => {
-//         this.setState({
-//             show: !this.state.show
-//         })
-//     }
-
-//     static beforeToday(day) {
-//         return moment(day).isBefore(new Date(), "day")
-//     }
-
-//     static isToday(day) {
-//         return moment(new Date()).isSame(day, "day")
-//     }
-
-//     isSelected(date, day) {
-//         return moment(date).isSame(day, "day")
-
-//     }
-//     static thisMonth(date, day) {
-//         return moment(date).isSame(day, "month");
-//     }
-//     dayStyles(date, day) {
-//         if (!Day.thisMonth(date, day)) return "notCurrent"
-//         // if (beforeToday(day)) return "before"
-//         if (Day.isToday(day)) return "today"
-//         if (this.isSelected(date, day)) return "selected"
-//         return ""
-//     }
-//         // toggleModal = () => {
-//     //     const { showEventModal } = this.state;
-//     //     const newState = { showEventModal: !showEventModal };
-//     render() {
-//         return (
-//             <Flex p={1}
-//                 w='9em'
-//                 h='6em'
-//                 bg='gray.200'
-//                 rounded={10}
-//                 direction='column'
-//                 onClick={() => !Day.beforeToday(this.props.day) && this.props.onClick(this.props.day)}
-//             >
-//                 <Flex w='100%' justify='space-between'>
-//                     <Box className={this.dayStyles(this.props.date, this.props.day)}>{
-//                         moment(this.props.day).format("D").toString()}
-//                     </Box>
-//                     <IconButton isRound aria-label="Add Event" icon="add" size="sm" variantColor="red" onClick={e =>{ this.showModal() }} /> 
-//                 </Flex>
-//                 <Modal  show={this.state.show} handleClose={this.hideModal}>
-//                     </Modal> 
-//                 <Badge>hello</Badge>
-//             </Flex>
-//         )
-
-//     }
-
-
-function Day({ day, value }) {
-   
-        const { isOpen, onOpen, onClose } = useDisclosure();
-        
-
-    function beforeToday(day) {
-        return moment(day).isBefore(new Date(), "day")
-    }
-
-
-    function isToday(day) {
-        return moment(new Date()).isSame(day, "day")
-    }
-
-    function isSelected(day) {
-        return moment(value).isSame(day, "day")
-
-    }
-
-
-    // function nextMonth() {
-    //     return value.clone().add(1, "month")
-    // }
-    function thisMonth() {
-        return moment(value).isSame(day, "month");
-    }
-    function dayStyles(day) {
-        if (!thisMonth(day)) return "before"
-        // if (beforeToday(day)) return "before"
-        if (isSelected(day) && (!isToday(day))) return "selected"
-        if (isToday(day)) return "today"
-        return ""
-    }
-    // function showModal(e){
-    //    }
 
     return (
-        <Flex p={1}
-            w='9em'
-            h='6em'
+        <Flex p={2}
+            w='11em'
+            h='7em'
             bg='gray.200'
             rounded={10}
             direction='column'
-            onClick={() => !beforeToday(day) && this.props.onClick(day)}
-        >
-            <Flex w='100%' justify='space-between'>
-                <Box className={dayStyles(day)}>{
-                    moment(day).format("D").toString()}
-                </Box>
-                <IconButton isRound aria-label="Add Event" icon="add" size="sm" variantColor="red" onClick={onOpen}  />
-            </Flex>
 
-      
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Modal Title</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <EventForm/>
-                </ModalBody>
-              </ModalContent>
-            </Modal>
-           
+        >
+            <Flex justify='space-between'  >
+                <Text {...dayStyles(date, day)} onClick={()=>onClick(day)}>{
+                    moment(day).format("D").toString()}
+                </Text>
+                <Form  onClick={onOpen} isOpen={isOpen} onClose={onClose}/>
+            </Flex>
+                   
+
         </Flex>
     )
 
 }
 
+function isToday(day) {
+    return moment(new Date()).isSame(day, "day")
+}
 
+function isSelected(date, day) {
+    return moment(date).isSame(day, "day")
+
+}
+
+
+// function nextMonth() {
+//     return value.clone().add(1, "month")
+// }
+function thisMonth(date, day) {
+    return moment(date).isSame(day, "month");
+}
+function dayStyles(date, day) {
+
+    const notCurrent = {
+        color: "grey",
+        fontWeight: "lighter"
+    }
+    const selected = {
+        color: "black",
+        fontWeight: "bold"
+    }
+    const today = {
+        color: "red",
+        fontWeight: "bolder"
+    }
+
+    if (!thisMonth(date, day)) return notCurrent
+    // if (beforeToday(day)) return "before"
+    if (isSelected(date, day) && (!isToday(day))) return selected
+    if (isToday(day)) return today
+    return {}
+}
+// function showModal(e){
+//    }
 
 export default Day;

@@ -75,7 +75,7 @@ class EventForm extends React.Component {
     render() {
         return (
             <form>
-                <FormControl p="50px" width="100%" onSubmit={this.onSubmit}>
+                <FormControl pl="10%" pr="10%"  pb="20%" width="100%"  onSubmit={this.onSubmit}>
                     <FormLabel> Event Name </FormLabel>
                     <Input
                         name="event"
@@ -121,7 +121,7 @@ class EventForm extends React.Component {
                     <br />
                     <Button
                         pos="absolute"
-                        mt={4}
+                        mt={3}
                         variantColor="teal"
                         type="submit"
                         onClick={this.submitForm}

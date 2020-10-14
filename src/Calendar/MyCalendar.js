@@ -10,31 +10,31 @@ function MyCalendar() {
     
 
     const [calendar, setCalendar] = useState([])
-    const [date, setDate] = useState(moment())
+    const [selectedDate, setSelectedDate] = useState(moment())
 
 
 
     useEffect(() => {
-        setCalendar(buildCalendar(date))
-    }, [date])
+        setCalendar(buildCalendar(selectedDate))
+    }, [selectedDate])
 
 
     return (
-        <Box >
+        <Box align="center" justify="center" >
             <Box >
-                <Header value={date} onChange={setDate} />
+                <Header value={selectedDate} onChange={setSelectedDate} />
             </Box>
-            <Box className="body">
-                <SimpleGrid columns={7} spacing={4}>
+            <Box>
+                <SimpleGrid columns={7} spacing={2}>
                     {["S", "M", "T", "W", "T", "F", "S"].map((d, index) => (
                         <Text fontSize="lg" as="em" textAlign="center" key={index} >{d}</Text>
                     ))}
                 </SimpleGrid>
-                <SimpleGrid columns={7} spacing={4}>
+                <SimpleGrid columns={7} spacing={2} justify="center">
 
                     {calendar.map((week) => {
                         return week.map((day) => (
-                            <Day day={day} onClick={setDate} date={date} key={moment(day).format('DD-MM-YYYY')} />
+                            <Day day={day} onClick={setSelectedDate} date={selectedDate} key={moment(day).format('DD-MM-YYYY')} />
                         ))
                     })}
                 </SimpleGrid>

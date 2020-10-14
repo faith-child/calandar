@@ -3,7 +3,7 @@ import "./styles.css"
 import { Heading } from "@chakra-ui/core";
 function Title() {
    return(
-    <Heading>Calendar</Heading>
+    <Heading size="xl" >Calendar</Heading>
    ) 
 }
 
