@@ -1,5 +1,6 @@
 
 import React from "react"
+import moment from "moment"
 import {
     FormControl,
     FormLabel,
@@ -31,6 +32,7 @@ class EventForm extends React.Component {
     }
 
     onChangeDate(e) {
+        console.log(e.target.value)
         this.setState({ date: e.target.value })
     }
     onChangestartTime(e) {
@@ -51,11 +53,18 @@ class EventForm extends React.Component {
 
     componentDidMount() {
         this.userData = JSON.parse(localStorage.getItem('user'));
+        
+
+        var defaultDay = null
+        if(this.props.defaultDayValue){
+            defaultDay = moment(this.props.defaultDayValue).format("YYYY-MM-DD").toString()
+        }
+        
 
         if (localStorage.getItem('user')) {
             this.setState({
                 event: this.userData.event,
-                date: this.userData.date,
+                date: defaultDay || this.userData.date,
                 startTime: this.userData.startTime,
                 endTime: this.userData.endTime
             })
@@ -78,6 +87,7 @@ class EventForm extends React.Component {
                 <FormControl pl="10%" pr="10%"  pb="20%" width="100%"  onSubmit={this.onSubmit}>
                     <FormLabel> Event Name </FormLabel>
                     <Input
+                        autoFocus
                         name="event"
                         type="text"
                         placeholder="Enter title of Event "
@@ -91,6 +101,7 @@ class EventForm extends React.Component {
                         placeholder="Enter time of event "
                         value={this.state.date}
                         onChange={this.onChangeDate}
+                        
                     />
                     <h3> Start  Time </h3>
                     <Input

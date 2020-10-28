@@ -1,6 +1,6 @@
 import React from "react"
 import moment from "moment"
-import Form from "../addEvent/Form"
+import AddEventForm from "../addEvent/AddEventForm"
 // import EventForm from "../addEvent/EventForm"
 import "./styles.css"
 import {
@@ -25,7 +25,7 @@ function Day({ day, date, onClick,isOpen, onOpen, onClose} ) {
                 <Text {...dayStyles(date, day)} onClick={()=>onClick(day)}>{
                     moment(day).format("D").toString()}
                 </Text>
-                <Form  onClick={onOpen} isOpen={isOpen} onClose={onClose}/>
+                <AddEventForm defaultDayValue={day} />
             </Flex>
             <Flex> 
                 <Badge>
